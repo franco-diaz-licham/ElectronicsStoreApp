@@ -16,7 +16,18 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-    lastUpdated: { type: String, required: true },
+import { computed } from 'vue';
+
+/** footer timestamp  */
+const lastUpdated = computed(() => {
+    const d = new Date();
+    return d.toLocaleString(undefined, {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+    });
 });
 </script>

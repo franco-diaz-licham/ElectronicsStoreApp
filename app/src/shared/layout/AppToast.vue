@@ -19,9 +19,9 @@ const props = defineProps({
     position: { type: String, default: "bottom-end" },
 });
 
-
 const emit = defineEmits(["update:show"]);
 
+/** Length of time to display the toast component. */
 let timer: number = 0;
 watch(
     () => props.show,
@@ -30,6 +30,8 @@ watch(
         if (val && props.duration > 0) timer = setTimeout(() => emit("update:show", false), props.duration);
     }
 );
+
+// Reset timer on initilised.
 onBeforeUnmount(() => clearTimeout(timer));
 
 /** Determine the toast variant. */

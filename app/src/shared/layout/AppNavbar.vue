@@ -1,5 +1,5 @@
 <template>
-    <header class="sticky-top">
+    <header class="sticky-top bg-primary">
         <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
             <div class="container-xl">
                 <!-- Brand -->
@@ -16,7 +16,7 @@
                     <!-- Search -->
                     <form class="input-group mx-lg-3 my-2 my-lg-0 flex-grow-1" role="search" @submit.prevent="emitSearch">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
-                        <input v-model.trim="query" class="form-control form-control-small" type="search" placeholder="Search products..." aria-label="Search products" />
+                        <input v-model="query" class="form-control form-control-small" type="search" placeholder="Search products..." aria-label="Search products" />
                     </form>
 
                     <!-- Right nav links -->
@@ -45,12 +45,21 @@
 import { ref } from "vue";
 import logo from "/images/logo.png";
 
+/** Component props. */
 const props = defineProps({
     cartCount: { type: Number, default: 0 },
 });
 const emit = defineEmits(["search"]);
+
+/** Query string for searching. */
 const query = ref("");
 
+/** Emit search changed. */
+function emitSearch() {
+    emit("search", query.value.trim());
+}
+
+/** Navigation links. */
 const mainLinks = [
     { path: "/", label: "Home" },
     { path: "/products", label: "Products" },
@@ -59,14 +68,4 @@ const mainLinks = [
     { path: "/account", label: "Account" },
     { path: "/login", label: "Login" },
 ];
-
-function emitSearch() {
-    emit("search", query.value);
-}
 </script>
-
-<style scoped>
-header {
-    background: #008cff;
-}
-</style>
