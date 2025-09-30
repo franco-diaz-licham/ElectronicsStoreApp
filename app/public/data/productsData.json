@@ -1,0 +1,334 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Apple iPhone 15 Pro",
+      "price": 1799.0,
+      "category": "Mobile Phones",
+      "brand": "Apple",
+      "image": "https://cdsassets.apple.com/live/7WUAS350/images/tech-specs/iphone_15_pro.png",
+      "description": "Apple's pro-tier iPhone with titanium frame and A17 Pro chip.",
+      "details": "120 Hz ProMotion OLED, USB-C, advanced cameras with ProRAW/ProRes.",
+      "specifications": {
+        "screenSize": "6.1\"",
+        "storage": "256GB",
+        "battery": "Approx. 3274 mAh",
+        "connectivity": "5G, Wi-Fi 6E, BT 5.3, NFC",
+        "waterResistance": "IP68"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Samsung Galaxy S24",
+      "price": 1699.0,
+      "category": "Mobile Phones",
+      "brand": "Samsung",
+      "image": "https://images.ctfassets.net/xa93kvziwaye/6PyJWDjZLi4i5O8Uh9Ntph/97ca7cf56b98afad8bc077a91e8aa587/1-0002.jpg?fm=webp&f=top&fit=fill&w=1124&h=1125&q=75",
+      "description": "Samsung's flagship with S Pen and 200 MP camera.",
+      "details": "Snapdragon 8 Gen 3, 6.8\" QHD+ 120 Hz, long battery life.",
+      "specifications": {
+        "screenSize": "6.8\"",
+        "storage": "512GB",
+        "battery": "5000 mAh",
+        "connectivity": "5G, Wi-Fi 7, BT 5.3, NFC",
+        "waterResistance": "IP68"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Apple MacBook Air 13\" (M3)",
+      "price": 1999.0,
+      "category": "Laptops",
+      "brand": "Apple",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/5/50/Macbook_Air_M1_Silver_PNG.png",
+      "description": "Fanless, ultra-portable MacBook with Apple M3.",
+      "details": "Liquid Retina display, great battery, silent performance.",
+      "specifications": {
+        "screenSize": "13.6\"",
+        "storage": "512GB SSD",
+        "battery": "Up to 18 hours",
+        "connectivity": "Wi-Fi 6E, BT 5.3, 2x TB4, MagSafe",
+        "waterResistance": "N/A"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Dell XPS 13 (9340)",
+      "price": 2599.0,
+      "category": "Laptops",
+      "brand": "Dell",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuU7weafaMFhFL3S6dhoLvFV76-AzHqghpkg&s",
+      "description": "Premium ultraportable with edge-to-edge keyboard and OLED option.",
+      "details": "Intel Core Ultra, sleek chassis, Thunderbolt 4.",
+      "specifications": {
+        "screenSize": "13.4\"",
+        "storage": "1TB SSD",
+        "battery": "Approx. 55 Wh",
+        "connectivity": "Wi-Fi 6E, BT 5.3, 2x TB4",
+        "waterResistance": "N/A"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Lenovo ThinkPad X1 Carbon Gen 11",
+      "price": 2899.0,
+      "category": "Laptops",
+      "brand": "Lenovo",
+      "image": "https://m.media-amazon.com/images/I/618coR0UW5L.jpg",
+      "description": "Business-class carbon-fiber ultrabook.",
+      "details": "Lightweight, MIL-STD durability, strong keyboard.",
+      "specifications": {
+        "screenSize": "14\"",
+        "storage": "1TB SSD",
+        "battery": "57 Wh",
+        "connectivity": "Wi-Fi 6E, BT 5.2, 2x TB4",
+        "waterResistance": "N/A"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Samsung Neo QLED QN90D 65\"",
+      "price": 3499.0,
+      "category": "TVs",
+      "brand": "Samsung",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw32RexUHcfFymF0Mww1b1neUUI-JYEKnwUQ&s",
+      "description": "Mini-LED QLED with high brightness and contrast.",
+      "details": "Quantum Matrix Tech, 4K 120 Hz, great for bright rooms.",
+      "specifications": {
+        "screenSize": "65\"",
+        "resolution": "4K",
+        "refreshRate": "120 Hz",
+        "ports": "HDMI 2.1, USB, Optical",
+        "smartOS": "Tizen"
+      }
+    },
+    {
+      "id": 7,
+      "name": "LG OLED C3 65\"",
+      "price": 3199.0,
+      "category": "TVs",
+      "brand": "LG",
+      "image": "https://www.lg.com/content/dam/channel/wcms/sa_en/images/tvs/oled65c36la_amve_emsj_sa_en_c/OLED65C36LA-L02.jpg",
+      "description": "Self-lit OLED with deep blacks and fast gaming.",
+      "details": "α9 Gen6 processor, Dolby Vision/Atmos, G-Sync/VRR.",
+      "specifications": {
+        "screenSize": "65\"",
+        "resolution": "4K",
+        "refreshRate": "120 Hz",
+        "ports": "HDMI 2.1, USB",
+        "smartOS": "webOS"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Sony Bravia XR A80L 65\"",
+      "price": 2999.0,
+      "category": "TVs",
+      "brand": "Sony",
+      "image": "https://www.appliancesonline.com.au/ak/0/9/2/8/0928e5423e70e985d9170dcc9d7ec6421215f4c4_65_A80L_titan_blk_dark_sil_outsidel_ccw-high.jpeg",
+      "description": "OLED TV powered by Cognitive Processor XR.",
+      "details": "Excellent motion handling, Acoustic Surface Audio+.",
+      "specifications": {
+        "screenSize": "65\"",
+        "resolution": "4K",
+        "refreshRate": "120 Hz",
+        "ports": "HDMI 2.1, USB, Optical",
+        "smartOS": "Google TV"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Sony PlayStation 5 (Slim)",
+      "price": 799.0,
+      "category": "Gaming",
+      "brand": "Sony",
+      "image": "https://cdn.shopify.com/s/files/1/0024/9803/5810/files/745707-Product-0-I-638835744001929506.jpg?v=1747977906",
+      "description": "Current-gen console with ultra-fast SSD and 4K gaming.",
+      "details": "Ray tracing, haptics, Tempest 3D Audio, VR support.",
+      "specifications": {
+        "storage": "1TB SSD",
+        "resolution": "Up to 4K120",
+        "connectivity": "Wi-Fi 6, BT 5.1",
+        "backwardCompatibility": "PS4"
+      }
+    },
+    {
+      "id": 10,
+      "name": "Sony DualSense Wireless Controller",
+      "price": 109.0,
+      "category": "Gaming",
+      "brand": "Sony",
+      "image": "https://gmedia.playstation.com/is/image/SIEPDC/dualsense-thumbnail-ps5-01-en-17jul20?$800px$",
+      "description": "PS5 controller with adaptive triggers and advanced haptics.",
+      "details": "Built-in mic, motion sensor, USB-C.",
+      "specifications": {
+        "compatibility": "PS5, PC (USB/BT)",
+        "battery": "Rechargeable",
+        "connectivity": "Bluetooth, USB-C",
+        "features": "Haptics, Adaptive Triggers"
+      }
+    },
+    {
+      "id": 11,
+      "name": "Sony PlayStation VR2",
+      "price": 879.0,
+      "category": "Gaming",
+      "brand": "Sony",
+      "image": "https://cdn.shopify.com/s/files/1/0024/9803/5810/t/16/assets/ps-vr-1-1667425493476.png?v=1667425498",
+      "description": "Next-gen VR headset for PS5 with eye tracking and HDR OLED.",
+      "details": "Sense controllers, inside-out tracking, 4K HDR panels.",
+      "specifications": {
+        "display": "OLED 2000×2040 per eye",
+        "refreshRate": "90/120 Hz",
+        "fov": "110° approx.",
+        "connection": "USB-C to PS5"
+      }
+    },
+    {
+      "id": 12,
+      "name": "Samsung Galaxy Buds Pro",
+      "price": 299.0,
+      "category": "Electronics",
+      "brand": "Samsung",
+      "image": "https://www.jbhifi.com.au/cdn/shop/files/776220-Product-0-I-638561819463124022.jpg?v=1720621462",
+      "description": "True wireless earbuds with ANC.",
+      "details": "Immersive sound, ambient mode, wireless charging case.",
+      "specifications": {
+        "battery": "Up to 8h (buds)",
+        "connectivity": "Bluetooth 5.x",
+        "waterResistance": "IPX7",
+        "charging": "USB-C, Qi"
+      }
+    },
+    {
+      "id": 13,
+      "name": "Samsung HW-Q990D Soundbar",
+      "price": 1999.0,
+      "category": "Electronics",
+      "brand": "Samsung",
+      "image": "https://media.flixcar.com/webp/synd-asset/Samsung-155751657-au-q-series-soundbar-hw-q990d-hw-q990d-xy-540212538--Download-Source--zoom.png",
+      "description": "11.1.4-ch flagship soundbar with Dolby Atmos.",
+      "details": "Wireless rear speakers, Q-Symphony, SpaceFit Sound Pro.",
+      "specifications": {
+        "channels": "11.1.4",
+        "inputs": "HDMI eARC, Optical",
+        "wireless": "Wi-Fi, BT",
+        "features": "Dolby Atmos, DTS:X"
+      }
+    },
+    {
+      "id": 14,
+      "name": "LG S95TR Soundbar",
+      "price": 1799.0,
+      "category": "Electronics",
+      "brand": "LG",
+      "image": "https://www.jbhifi.com.au/cdn/shop/files/777795-Product-0-I-638459889602870934.jpg?v=1719882932",
+      "description": "High-end 9.1.5-ch soundbar with up-firing drivers.",
+      "details": "WOW Orchestra with LG TVs, HDMI eARC, AI Room Calibration.",
+      "specifications": {
+        "channels": "9.1.5",
+        "inputs": "HDMI eARC, Optical, USB",
+        "wireless": "Wi-Fi, BT",
+        "features": "Dolby Atmos, DTS:X"
+      }
+    },
+    {
+      "id": 15,
+      "name": "Sony WH-1000XM5",
+      "price": 549.0,
+      "category": "Electronics",
+      "brand": "Sony",
+      "image": "https://www.jbhifi.com.au/cdn/shop/products/592550-Product-0-I-637878553982254808.jpg?v=1652248221",
+      "description": "Flagship noise-cancelling over-ear headphones.",
+      "details": "Excellent ANC, multipoint, long battery life.",
+      "specifications": {
+        "battery": "Up to 30 hours",
+        "connectivity": "BT 5.2, 3.5mm",
+        "codecs": "SBC, AAC, LDAC",
+        "weight": "250 g approx."
+      }
+    },
+    {
+      "id": 16,
+      "name": "Apple Mac mini (M2)",
+      "price": 1249.0,
+      "category": "PCs",
+      "brand": "Apple",
+      "image": "https://s3.us-east-1.amazonaws.com/product-image-bucket-prod-us/621614-Product-5-I-638096407641392945.jpg",
+      "description": "Compact desktop Mac with M2 chip.",
+      "details": "Tiny footprint, quiet, versatile connectivity.",
+      "specifications": {
+        "storage": "512GB SSD",
+        "memory": "16GB unified",
+        "ports": "2x TB4, 2x USB-A, HDMI, Ethernet",
+        "wireless": "Wi-Fi 6E, BT 5.3"
+      }
+    },
+    {
+      "id": 17,
+      "name": "Dell OptiPlex 7010 SFF",
+      "price": 1399.0,
+      "category": "PCs",
+      "brand": "Dell",
+      "image": "https://i.ebayimg.com/images/g/tpwAAOSwTzJhMfFP/s-l1200.jpg",
+      "description": "Business small-form-factor desktop.",
+      "details": "Manageable, reliable, tool-less chassis.",
+      "specifications": {
+        "cpu": "Intel Core i7",
+        "storage": "512GB SSD",
+        "memory": "16GB",
+        "ports": "USB-C, USB-A, HDMI/DP, Ethernet"
+      }
+    },
+    {
+      "id": 18,
+      "name": "Lenovo ThinkCentre M90q Tiny Gen 4",
+      "price": 1299.0,
+      "category": "PCs",
+      "brand": "Lenovo",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQDJNetACTinC14qAWn0unKrlYInyOvYW9Bw&s",
+      "description": "Enterprise-ready mini PC.",
+      "details": "Tiny 1L chassis, Intel vPro options, lots of ports.",
+      "specifications": {
+        "cpu": "Intel Core i7",
+        "storage": "512GB SSD",
+        "memory": "16GB",
+        "ports": "USB-C, USB-A, DP/HDMI, Ethernet"
+      }
+    },
+    {
+      "id": 19,
+      "name": "Dell G15 5530",
+      "price": 1899.0,
+      "category": "Laptops",
+      "brand": "Dell",
+      "image": "https://m.media-amazon.com/images/I/71Jz92mKkgL._UF894,1000_QL80_.jpg",
+      "description": "15.6\" gaming laptop with NVIDIA graphics.",
+      "details": "High-refresh display, robust cooling, RGB keyboard.",
+      "specifications": {
+        "screenSize": "15.6\"",
+        "storage": "1TB SSD",
+        "battery": "Approx. 86 Wh",
+        "connectivity": "Wi-Fi 6, BT 5.2",
+        "waterResistance": "N/A"
+      }
+    },
+    {
+      "id": 20,
+      "name": "Lenovo Legion 5 Pro 16\"",
+      "price": 2599.0,
+      "category": "Laptops",
+      "brand": "Lenovo",
+      "image": "https://p4-ofp.static.pub/fes/cms/2022/06/16/s444ye7sqwg6rv1b8on54vm77eopra543125.png",
+      "description": "Performance-focused 16\" gaming notebook.",
+      "details": "High-TGP GPU options, 16:10 panel, strong thermals.",
+      "specifications": {
+        "screenSize": "16\" 2560×1600",
+        "storage": "1TB SSD",
+        "battery": "80 Wh",
+        "connectivity": "Wi-Fi 6E, BT 5.2",
+        "waterResistance": "N/A"
+      }
+    }
+  ]
+}
