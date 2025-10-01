@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex flex-column min-vh-100">
         <!-- Navbar -->
-        <AppNavbar :cart-count="total" @search="goSearch" />
+        <AppNavbar :cart-count="count" @search="goSearch" />
 
         <!-- Main content -->
         <main class="flex-grow-1">
@@ -32,7 +32,7 @@ const router = useRouter();
 const q = ref("");
 const toast = { state: useToast().state };
 const cart = useCartStore();
-const { total } = storeToRefs(cart);
+const { count } = storeToRefs(cart);
 
 /** Search forwarded from navbar to products page. */
 function goSearch(query: string) {

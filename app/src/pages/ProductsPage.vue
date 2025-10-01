@@ -87,7 +87,7 @@
                     </div>
                 </div>
 
-                <ProductGrid :products="paged" :cols-sm="2" :cols-md="2" :cols-lg="3" class="mb-4" />
+                <ProductGrid :products="paged" :cols-sm="2" :cols-md="2" :cols-lg="3" class="mb-4" @add-item="(data: ProductCardModel) => handleAddItem(data)" />
             </section>
         </div>
     </section>
@@ -103,7 +103,10 @@ import type { ProductCardModel, selectorBaseModel } from "../features/products/m
 import FilterBox from "../shared/components/FilterBox.vue";
 import ProductGrid from "../features/products/components/ProductGrid.vue";
 import RadioButton from "../shared/components/RadioButton.vue";
+import { useCartStore } from "../stores/cartStore";
+import type { BasketItemModel } from "../features/basket/models/basket.type";
 
+const cart = useCartStore();
 const route = useRoute();
 const router = useRouter();
 const filters = ref<{ price: string; categories: string[]; brands: string[] }>({
@@ -258,4 +261,15 @@ function resetSearch() {
     delete qless.q;
     router.replace({ path: route.path, query: qless });
 }
+
+/** Handle added item to basket. */
+const handleAddItem = (data: ProductCardModel) => {
+    const selectedProduct = products.value?.find((x) => x.id === data.id);
+    if(!selectedProduct) return;
+    const item: BasketItemModel = {
+        quantity: 1,
+        product: selectedProduct,
+    };
+    cart.add(item);
+};
 </script>

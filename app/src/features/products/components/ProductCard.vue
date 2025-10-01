@@ -16,11 +16,13 @@
 </template>
 
 <script setup lang="ts">
+import type { PropType } from "vue";
 import { formatCurrency } from "../../../shared/lib/helpers";
+import type { ProductCardModel } from "../models/product.type";
 
 /** Functional prrops/ */
 const props = defineProps({
-    product: { type: Object, required: true },
+    product: { type: Object as PropType<ProductCardModel>, required: true },
 });
 
 // Define callbacks.
