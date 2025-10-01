@@ -1,5 +1,5 @@
 <template>
- <div class="d-flex flex-column min-vh-100">
+    <div class="d-flex flex-column min-vh-100">
         <!-- Navbar -->
         <AppNavbar :cart-count="total" @search="goSearch" />
 
@@ -28,15 +28,17 @@ import { useCartStore } from "../stores/cartStore";
 import { storeToRefs } from "pinia";
 
 const router = useRouter();
+/** Query portion of search. */
 const q = ref("");
 const toast = { state: useToast().state };
-const cart = useCartStore()
-const { total } = storeToRefs(cart) 
+const cart = useCartStore();
+const { total } = storeToRefs(cart);
 
-/** search forwarded from navbar to products page. */
+/** Search forwarded from navbar to products page. */
 function goSearch(query: string) {
     q.value = (query || "").trim();
-    router.push({ path: "/products", query: q.value ? { q: q.value } : {} });
+    const value = q.value ? { q: q.value } : {};
+    router.push({ path: "/products", query: value });
 }
 </script>
 

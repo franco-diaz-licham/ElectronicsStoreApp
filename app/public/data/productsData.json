@@ -2,7 +2,7 @@
   "data": [
     {
       "id": 1,
-      "name": "Apple iPhone 15 Pro",
+      "title": "Apple iPhone 15 Pro",
       "price": 1799.0,
       "category": "Mobile Phones",
       "brand": "Apple",
@@ -19,7 +19,7 @@
     },
     {
       "id": 2,
-      "name": "Samsung Galaxy S24",
+      "title": "Samsung Galaxy S24",
       "price": 1699.0,
       "category": "Mobile Phones",
       "brand": "Samsung",
@@ -36,7 +36,7 @@
     },
     {
       "id": 3,
-      "name": "Apple MacBook Air 13\" (M3)",
+      "title": "Apple MacBook Air 13\" (M3)",
       "price": 1999.0,
       "category": "Laptops",
       "brand": "Apple",
@@ -53,7 +53,7 @@
     },
     {
       "id": 4,
-      "name": "Dell XPS 13 (9340)",
+      "title": "Dell XPS 13 (9340)",
       "price": 2599.0,
       "category": "Laptops",
       "brand": "Dell",
@@ -70,7 +70,7 @@
     },
     {
       "id": 5,
-      "name": "Lenovo ThinkPad X1 Carbon Gen 11",
+      "title": "Lenovo ThinkPad X1 Carbon Gen 11",
       "price": 2899.0,
       "category": "Laptops",
       "brand": "Lenovo",
@@ -87,7 +87,7 @@
     },
     {
       "id": 6,
-      "name": "Samsung Neo QLED QN90D 65\"",
+      "title": "Samsung Neo QLED QN90D 65\"",
       "price": 3499.0,
       "category": "TVs",
       "brand": "Samsung",
@@ -104,7 +104,7 @@
     },
     {
       "id": 7,
-      "name": "LG OLED C3 65\"",
+      "title": "LG OLED C3 65\"",
       "price": 3199.0,
       "category": "TVs",
       "brand": "LG",
@@ -121,7 +121,7 @@
     },
     {
       "id": 8,
-      "name": "Sony Bravia XR A80L 65\"",
+      "title": "Sony Bravia XR A80L 65\"",
       "price": 2999.0,
       "category": "TVs",
       "brand": "Sony",
@@ -138,7 +138,7 @@
     },
     {
       "id": 9,
-      "name": "Sony PlayStation 5 (Slim)",
+      "title": "Sony PlayStation 5 (Slim)",
       "price": 799.0,
       "category": "Gaming",
       "brand": "Sony",
@@ -154,7 +154,7 @@
     },
     {
       "id": 10,
-      "name": "Sony DualSense Wireless Controller",
+      "title": "Sony DualSense Wireless Controller",
       "price": 109.0,
       "category": "Gaming",
       "brand": "Sony",
@@ -170,7 +170,7 @@
     },
     {
       "id": 11,
-      "name": "Sony PlayStation VR2",
+      "title": "Sony PlayStation VR2",
       "price": 879.0,
       "category": "Gaming",
       "brand": "Sony",
@@ -186,7 +186,7 @@
     },
     {
       "id": 12,
-      "name": "Samsung Galaxy Buds Pro",
+      "title": "Samsung Galaxy Buds Pro",
       "price": 299.0,
       "category": "Electronics",
       "brand": "Samsung",
@@ -202,7 +202,7 @@
     },
     {
       "id": 13,
-      "name": "Samsung HW-Q990D Soundbar",
+      "title": "Samsung HW-Q990D Soundbar",
       "price": 1999.0,
       "category": "Electronics",
       "brand": "Samsung",
@@ -218,7 +218,7 @@
     },
     {
       "id": 14,
-      "name": "LG S95TR Soundbar",
+      "title": "LG S95TR Soundbar",
       "price": 1799.0,
       "category": "Electronics",
       "brand": "LG",
@@ -234,7 +234,7 @@
     },
     {
       "id": 15,
-      "name": "Sony WH-1000XM5",
+      "title": "Sony WH-1000XM5",
       "price": 549.0,
       "category": "Electronics",
       "brand": "Sony",
@@ -250,7 +250,7 @@
     },
     {
       "id": 16,
-      "name": "Apple Mac mini (M2)",
+      "title": "Apple Mac mini (M2)",
       "price": 1249.0,
       "category": "PCs",
       "brand": "Apple",
@@ -266,7 +266,7 @@
     },
     {
       "id": 17,
-      "name": "Dell OptiPlex 7010 SFF",
+      "title": "Dell OptiPlex 7010 SFF",
       "price": 1399.0,
       "category": "PCs",
       "brand": "Dell",
@@ -282,7 +282,7 @@
     },
     {
       "id": 18,
-      "name": "Lenovo ThinkCentre M90q Tiny Gen 4",
+      "title": "Lenovo ThinkCentre M90q Tiny Gen 4",
       "price": 1299.0,
       "category": "PCs",
       "brand": "Lenovo",
@@ -298,7 +298,7 @@
     },
     {
       "id": 19,
-      "name": "Dell G15 5530",
+      "title": "Dell G15 5530",
       "price": 1899.0,
       "category": "Laptops",
       "brand": "Dell",
@@ -315,7 +315,7 @@
     },
     {
       "id": 20,
-      "name": "Lenovo Legion 5 Pro 16\"",
+      "title": "Lenovo Legion 5 Pro 16\"",
       "price": 2599.0,
       "category": "Laptops",
       "brand": "Lenovo",

@@ -3,8 +3,8 @@
         <div class="container-xxl py-3 text-center small">
             <div class="mb-2">
                 <RouterLink class="text-decoration-none text-light me-3" to="/">Home</RouterLink>
-                <RouterLink class="text-decoration-none text-light me-3" to="/about">About Us</RouterLink>
-                <RouterLink class="text-decoration-none text-light" to="/contact">Contact</RouterLink>
+                <RouterLink class="text-decoration-none text-light me-3" to="/about-us">About Us</RouterLink>
+                <RouterLink class="text-decoration-none text-light" to="/contact-us">Contact</RouterLink>
             </div>
             <div>
                 © 2025 Retail eCommerce ·

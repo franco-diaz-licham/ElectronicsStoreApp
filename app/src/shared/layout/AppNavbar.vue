@@ -63,8 +63,8 @@ function emitSearch() {
 const mainLinks = [
     { path: "/", label: "Home" },
     { path: "/products", label: "Products" },
-    { path: "/about", label: "About" },
-    { path: "/contact", label: "Contact" },
+    { path: "/about-us", label: "About" },
+    { path: "/contact-us", label: "Contact" },
     { path: "/account", label: "Account" },
     { path: "/login", label: "Login" },
 ];
