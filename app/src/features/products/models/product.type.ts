@@ -7,15 +7,7 @@ export interface ProductModel {
     category: string;
     description: string;
     details: string;
-    specifications: SpecificationModel
-}
-
-export interface SpecificationModel{
-    screenSize: string;
-    storage: string;
-    battery: string;
-    connectivity: string;
-    waterResistance: string;
+    specifications: object
 }
 
 export interface ProductCardModel {

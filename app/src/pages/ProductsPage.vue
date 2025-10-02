@@ -105,10 +105,12 @@ import ProductGrid from "../features/products/components/ProductGrid.vue";
 import RadioButton from "../shared/components/RadioButton.vue";
 import { useCartStore } from "../stores/cartStore";
 import type { BasketItemModel } from "../features/basket/models/basket.type";
+import { useToast } from "../shared/composables/useToast";
 
 const cart = useCartStore();
 const route = useRoute();
 const router = useRouter();
+const { showAlert } = useToast();
 const filters = ref<{ price: string; categories: string[]; brands: string[] }>({
     price: "",
     categories: [],
@@ -143,8 +145,8 @@ const { data: categories, isLoading: categoriesLoading } = useCategories();
 /** Convert loaded products into card-ready models with href */
 const productsForCard = computed<ProductCardModel[]>(() => {
     if (productsLoading.value) return [];
-    const arr = products.value ?? [];
-    return arr.map((p, i) => ({
+    const list = products.value ?? [];
+    return list.map((p, i) => ({
         id: p.id ?? i,
         title: p.title,
         price: p.price,
@@ -167,7 +169,7 @@ const usedBrands = computed<string[]>(() => {
     return uniqueSortedByName(brands.value);
 });
 
-/** Uniqye values for categories. */
+/** Unique values for categories. */
 const usedCategories = computed<string[]>(() => {
     if (categoriesLoading.value) return [];
     return uniqueSortedByName(categories.value);
@@ -265,11 +267,17 @@ function resetSearch() {
 /** Handle added item to basket. */
 const handleAddItem = (data: ProductCardModel) => {
     const selectedProduct = products.value?.find((x) => x.id === data.id);
-    if(!selectedProduct) return;
-    const item: BasketItemModel = {
-        quantity: 1,
-        product: selectedProduct,
-    };
-    cart.add(item);
+    if (!selectedProduct) return;
+
+    try {
+        const item: BasketItemModel = {
+            quantity: 1,
+            product: selectedProduct,
+        };
+        cart.add(item);
+        showAlert(`${data.title} (x${1}) added to cart`, "success");
+    } catch (e) {
+        showAlert("Could not save cart.", "danger");
+    }
 };
 </script>

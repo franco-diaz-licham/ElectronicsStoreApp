@@ -40,7 +40,7 @@ export const useCartStore = defineStore("cart", () => {
         items.value = [];
     }
 
-    /** Save cart information to local storage. */
+    // Save cart information to local storage.
     watch(
         items,
         (val) => {

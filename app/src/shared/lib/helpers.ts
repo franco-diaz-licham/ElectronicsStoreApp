@@ -2,7 +2,8 @@ import type { axioResponse } from "../api/api.type";
 
 /** Format currency to AUD. */
 export function formatCurrency(v: number) {
-    return new Intl.NumberFormat("en-AU", { style: "currency", currency: "AUD" }).format(v);
+    const AUD = new Intl.NumberFormat("en-AU", { style: "currency", currency: "AUD" });
+    return AUD.format(v);
 }
 
 export function transformApiResponse<T>(response: axioResponse<T>) {

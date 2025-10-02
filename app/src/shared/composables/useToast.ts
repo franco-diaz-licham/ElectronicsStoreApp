@@ -11,12 +11,12 @@ const state = reactive({
 
 /** Custom hook for toast state. */
 export function useToast() {
-    function notify(message: string, type = "success", duration = 2500, position = "bottom-end") {
+    function showAlert(message: string, type = "success", duration = 2500, position = "bottom-end") {
         state.message = message;
         state.type = type;
         state.duration = duration;
         state.position = position;
         state.show = true;
     }
-    return { state, notify };
+    return { state, showAlert };
 }

@@ -1,4 +1,3 @@
-// src/api/keys.ts
 export const keys = {
     products: () => ["products"] as const,
     product: (id: string) => ["product", id] as const,
