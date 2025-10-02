@@ -1,11 +1,6 @@
 <template>
     <!-- Hero -->
-    <section id="hero" class="w-100 my-2 rounded-3 shadow bg-primary-subtle">
-        <div class="p-5 text-center">
-            <h1 class="mb-1">Products</h1>
-            <p class="lead mb-0">Seasonal Offers and Promotions</p>
-        </div>
-    </section>
+    <HeroBanner title="Products" subtitle="Seasonal Offers and Promotions" />
 
     <section class="my-3">
         <div class="row g-4">
@@ -106,6 +101,8 @@ import RadioButton from "../shared/components/RadioButton.vue";
 import { useCartStore } from "../stores/cartStore";
 import type { BasketItemModel } from "../features/basket/models/basket.type";
 import { useToast } from "../shared/composables/useToast";
+import { mapToProductCardModel } from "../features/products/api/mapper";
+import HeroBanner from "../shared/components/HeroBanner.vue";
 
 const cart = useCartStore();
 const route = useRoute();
@@ -146,15 +143,7 @@ const { data: categories, isLoading: categoriesLoading } = useCategories();
 const productsForCard = computed<ProductCardModel[]>(() => {
     if (productsLoading.value) return [];
     const list = products.value ?? [];
-    return list.map((p, i) => ({
-        id: p.id ?? i,
-        title: p.title,
-        price: p.price,
-        image: p.image,
-        brand: p.brand,
-        category: p.category,
-        href: `/product-details?id=${p.id ?? i}`,
-    }));
+    return list.map(mapToProductCardModel);
 });
 
 /** Get unique values for filters. */

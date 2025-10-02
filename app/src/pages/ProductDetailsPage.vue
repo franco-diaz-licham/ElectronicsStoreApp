@@ -126,6 +126,7 @@ import ProductGrid from "../features/products/components/ProductGrid.vue";
 import type { BasketItemModel } from "../features/basket/models/basket.type";
 import { useCartStore } from "../stores/cartStore";
 import { useToast } from "../shared/composables/useToast";
+import { mapToProductCardModel } from "../features/products/api/mapper";
 
 const route = useRoute();
 const product = ref<ProductModel | null>(null);
@@ -144,9 +145,9 @@ const productId = computed(() => {
 onMounted(getData);
 watch(() => route.query.id, getData);
 watch([products, productsLoading], () => {
-  if (!productsLoading.value) {
-    getData();
-  }
+    if (!productsLoading.value) {
+        getData();
+    }
 });
 
 /** Fetches data and maps it to correct models for display. */
@@ -179,28 +180,8 @@ const specRows = computed(() => {
 /** Get related products for product grid. */
 const otherProducts = computed(() => {
     if (!product.value) return [];
-    const sameCategory = products
-        .value!.filter((p) => p.id !== product.value?.id && p.category === product.value?.category)
-        .map((p, i) => ({
-            id: p.id ?? i,
-            title: p.title,
-            price: p.price,
-            image: p.image,
-            brand: p.brand,
-            category: p.category,
-            href: `/product-details?id=${p.id ?? i}`,
-        }));
-    const rest = products
-        .value!.filter((p) => p.id !== product.value?.id && p.category !== product.value?.category)
-        .map((p, i) => ({
-            id: p.id ?? i,
-            title: p.title,
-            price: p.price,
-            image: p.image,
-            brand: p.brand,
-            category: p.category,
-            href: `/product-details?id=${p.id ?? i}`,
-        }));
+    const sameCategory = products.value!.filter((p) => p.id !== product.value?.id && p.category === product.value?.category).map(mapToProductCardModel);
+    const rest = products.value!.filter((p) => p.id !== product.value?.id && p.category !== product.value?.category).map(mapToProductCardModel);
     return [...sameCategory, ...rest].slice(0, 6);
 });
 
