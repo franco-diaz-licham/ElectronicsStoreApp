@@ -138,12 +138,12 @@ const { showAlert } = useToast();
 
 /** Get poduct id from url. */
 const productId = computed(() => {
-    const idRaw = route.query.id;
+    const idRaw = route.params.id;
     return idRaw != null ? String(idRaw) : "";
 });
 
 onMounted(getData);
-watch(() => route.query.id, getData);
+watch(() => route.params.id, getData);
 watch([products, productsLoading], () => {
     if (!productsLoading.value) {
         getData();

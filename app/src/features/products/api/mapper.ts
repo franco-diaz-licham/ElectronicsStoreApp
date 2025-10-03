@@ -9,6 +9,6 @@ export function mapToProductCardModel(p: ProductModel): ProductCardModel {
         image: p.image,
         brand: p.brand,
         category: p.category,
-        href: `/product-details?id=${p.id}`,
+        href: `/products/${p.id}`,
     };
 }

@@ -18,8 +18,17 @@ export const useCartStore = defineStore("cart", () => {
     /** Gets all the current items stored in local storage. */
     const items = ref<BasketItemModel[]>(initial);
 
+    /** Determines shipping costs. */
+    const shipping = computed(() => (items.value.length ? 25 : 0));
+
+    /** GST calculation. */
+    const gst = computed(() => subtotal.value * 0.1);
+
     /** Counts the total cost of basket items. */
-    const total = computed(() => items.value.reduce((s, i) => s + i.product.price * i.quantity, 0));
+    const subtotal = computed(() => items.value.reduce((s, i) => s + i.product.price * i.quantity, 0));
+
+    /** Calculates the total cost of the order. */
+    const total = computed(() => subtotal.value + shipping.value + gst.value);
 
     /** The total number of items in the basket. */
     const count = computed(() => items.value.reduce((n, i) => n + i.quantity, 0));
@@ -31,8 +40,15 @@ export const useCartStore = defineStore("cart", () => {
     }
 
     /** Removes an item from the current basket. */
-    function remove(id: Number) {
+    function remove(id: number) {
         items.value = items.value.filter((i) => i.product.id !== id);
+    }
+
+    /** Updates quantity */
+    function updateQuantity(id: number, qty: number) {
+        const found = items.value.find((x) => x.product.id === id);
+        if (!found) return;
+        found.quantity = qty;
     }
 
     /** Clears the entire basket. */
@@ -49,5 +65,5 @@ export const useCartStore = defineStore("cart", () => {
         { deep: true }
     );
 
-    return { items, total, count, add, remove, clear };
+    return { items, total, subtotal, count, shipping, gst, add, remove, clear, updateQuantity };
 });

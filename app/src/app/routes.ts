@@ -11,7 +11,7 @@ import SignupPage from "../pages/SignUpPage.vue";
 const routes = [
     { path: "/", name: "Home", component: HomePage },
     { path: "/products", name: "Products", component: ProductsPage },
-    { path: "/product-details", name: "ProductDetails", component: ProductDetailsPage },
+    { path: "/products/:id", name: "ProductDetails", component: ProductDetailsPage },
     { path: "/about-us", name: "AboutUs", component: AboutUsPage },
     { path: "/contact-us", name: "ContactUs", component: ContactUsPage },
     { path: "/account", name: "MyAccount", component: MyAccountPage },

@@ -20,7 +20,7 @@ import type { PropType } from "vue";
 import { formatCurrency } from "../../../shared/lib/helpers";
 import type { ProductCardModel } from "../models/product.type";
 
-/** Functional prrops/ */
+/** Functional props. */
 const props = defineProps({
     product: { type: Object as PropType<ProductCardModel>, required: true },
 });
