@@ -8,6 +8,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { createPinia } from "pinia";
 import { QueryClient, VueQueryPlugin, type VueQueryPluginOptions } from "@tanstack/vue-query";
 import routes from "./routes";
+import { configure } from "vee-validate";
 
 /** Configure routing. */
 const router = createRouter({
@@ -31,6 +32,14 @@ const queryClient = new QueryClient({
             retry: 0,
         },
     },
+});
+
+// Configure vee-validate
+configure({
+  validateOnInput: true,
+  validateOnBlur: true,
+  validateOnChange: true,
+  validateOnModelUpdate: true, 
 });
 
 // Mount the app and add services.

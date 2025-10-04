@@ -1,7 +1,7 @@
 <template>
     <!-- Hero -->
     <HeroBanner src="/images/index-banner.png" alt="Seasonal promotions banner with featured products" />
-
+    
     <!-- Main Content -->
     <section class="mt-2 mb-5">
         <div class="row g-4">

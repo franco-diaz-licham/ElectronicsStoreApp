@@ -97,7 +97,7 @@ const cart = useCartStore();
 const { items, total, subtotal, count, shipping, gst } = storeToRefs(cart);
 
 // actions stay on the store
-const { remove, clear, updateQuantity } = cart;
+const { remove, updateQuantity } = cart;
 const { showAlert } = useToast();
 
 /** Increase product quantity. */

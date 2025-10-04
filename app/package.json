@@ -19,7 +19,7 @@
         "vee-validate": "^4.15.1",
         "vue": "^3.5.21",
         "vue-router": "^4.5.1",
-        "zod": "^4.1.11"
+        "zod": "^3.25.76"
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^6.0.1",
