@@ -3,7 +3,7 @@ import { computed, ref, watch } from "vue";
 import type { BasketItemModel } from "../features/basket/models/basket.type";
 
 /** Local storage key. */
-const STORAGE_KEY = "cart:v1";
+const STORAGE_KEY = "cart";
 
 export const useCartStore = defineStore("cart", () => {
     /** Get basket items from local storage. */

@@ -6,6 +6,12 @@ export function formatCurrency(v: number) {
     return AUD.format(v);
 }
 
+/** Get axio response. */
 export function transformApiResponse<T>(response: axioResponse<T>) {
     return Array.isArray(response?.data) ? response.data : Array.isArray(response.data?.data) ? response.data.data : [];
+}
+
+/** format datetime to local Australian time. */
+export function formatDate(date: string){
+    return new Date(date).toLocaleDateString();
 }

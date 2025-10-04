@@ -90,14 +90,9 @@ import type { BasketItemModel } from "../features/basket/models/basket.type";
 import { useToast } from "../shared/composables/useToast";
 import { storeToRefs } from "pinia";
 
-// const cart = ref([]);
-const cart = useCartStore();
-
-// state & getters as refs
-const { items, total, subtotal, count, shipping, gst } = storeToRefs(cart);
-
-// actions stay on the store
-const { remove, updateQuantity } = cart;
+const cartStore = useCartStore();
+const { items, total, subtotal, count, shipping, gst } = storeToRefs(cartStore);
+const { remove, updateQuantity } = cartStore;
 const { showAlert } = useToast();
 
 /** Increase product quantity. */

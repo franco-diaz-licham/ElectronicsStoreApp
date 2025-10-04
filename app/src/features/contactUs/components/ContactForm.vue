@@ -1,9 +1,14 @@
 <template>
     <form class="shadow p-3 rounded-3 needs-validation" novalidate @submit.prevent="onSubmit">
+        <transition name="fade">
+            <div v-if="alertText" class="alert mt-2" :class="alertClass" role="alert" aria-live="polite">
+                {{ alertText }}
+            </div>
+        </transition>
         <div class="row g-3">
             <!-- Firstname -->
             <div class="col-md-6">
-                <TextInput name="firstName" id="firstName" label="First Name" required />
+                <TextInput name="firstName" label="First Name" required />
             </div>
             <!-- Surname -->
             <div class="col-md-6">
@@ -25,7 +30,7 @@
             <div class="col-12">
                 <TextInput name="message" label="Message" as="textarea" :rows="4" required help="Min 10 characters." />
             </div>
-            <!-- Button -->
+            <!-- Submit button -->
             <div class="col-12 text-end">
                 <button type="submit" class="btn btn-secondary shadow" :disabled="isSubmitting"><span v-if="isSubmitting">Sending…</span><span v-else>Send Message</span></button>
             </div>
@@ -39,6 +44,9 @@ import { toTypedSchema } from "@vee-validate/zod";
 import { contactInitialValues, contactSchema, type ContactSchema } from "../models/contactSchema";
 import type { ContactFormModel } from "../models/contact.type";
 import TextInput from "../../../shared/components/TextInput.vue";
+import { useAlert } from "../../../shared/composables/useAlert";
+
+const { alertText, alertClass, showAlert } = useAlert();
 
 const emit = defineEmits<{
     (e: "formSubmit", payload: ContactFormModel): void;
@@ -51,7 +59,23 @@ const { handleSubmit, isSubmitting, resetForm } = useForm<ContactSchema>({
 
 /** Handles submit. */
 const onSubmit = handleSubmit(async (values: ContactFormModel) => {
-    emit("formSubmit", values);
-    resetForm();
+    try {
+        emit("formSubmit", values);
+        showAlert("Thanks! we'll get back to you!", "success");
+        resetForm({ values }); // keep values, clear touched/errors
+    } catch (e) {
+        showAlert("Could not save changes.", "danger");
+    }
 });
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s;
+}
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+</style>
