@@ -44,7 +44,7 @@
 <script setup lang="ts">
 import { toTypedSchema } from "@vee-validate/zod";
 import type { ProfileModel } from "../models/profile.type";
-import { profileInitialValues, profiletSchema, type ProfileSchema } from "../models/profileSchema";
+import { profileInitialValues, profileSchema, type ProfileSchema } from "../models/profileSchema";
 import { useForm } from "vee-validate";
 import TextInput from "../../../shared/components/TextInput.vue";
 import { useAlert } from "../../../shared/composables/useAlert";
@@ -52,8 +52,8 @@ import SelectInput from "../../../shared/components/SelectInput.vue";
 import type { PropType } from "vue";
 
 const props = defineProps({
-    model: {type: Object as PropType<ProfileModel>, required: false}
-})
+    model: { type: Object as PropType<ProfileModel>, required: false },
+});
 
 const { alertText, alertClass, showAlert } = useAlert();
 const options = [
@@ -71,7 +71,7 @@ const emit = defineEmits<{
 }>();
 
 const { handleSubmit, isSubmitting, resetForm } = useForm<ProfileSchema>({
-    validationSchema: toTypedSchema(profiletSchema),
+    validationSchema: toTypedSchema(profileSchema),
     initialValues: props.model || profileInitialValues,
 });
 

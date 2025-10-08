@@ -14,7 +14,7 @@ export const contactSchema = z.object({
 });
 export type ContactSchema = z.infer<typeof contactSchema>;
 
-/** Contract form model initial default values. */
+/** Contact form model initial default values. */
 export const contactInitialValues: ContactSchema = {
     firstName: "",
     surname: "",

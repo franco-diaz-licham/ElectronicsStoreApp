@@ -1,35 +1,32 @@
 <template>
     <Field :name="name" v-slot="{ field, errorMessage, meta }">
-        <div>
-            <label :for="id" class="form-label"> {{ label }}<span v-if="required" class="text-danger">*</span> </label>
+        <label :for="id" class="form-label"> {{ label }}<span v-if="required" class="text-danger">*</span> </label>
+        <select
+            v-bind="field"
+            :id="id"
+            class="form-control"
+            :class="{
+                'is-invalid': meta.touched && !!errorMessage,
+                'is-valid': meta.dirty && !errorMessage,
+            }"
+            :aria-invalid="!!errorMessage"
+            :aria-describedby="`${id}-feedback`"
+            :multiple="multiple"
+            :disabled="disabled"
+        >
+            <!-- Optional placeholder -->
+            <option v-if="placeholder && !multiple" disabled value="">
+                {{ placeholder }}
+            </option>
 
-            <select
-                v-bind="field"
-                :id="id"
-                class="form-control"
-                :class="{
-                    'is-invalid': meta.touched && !!errorMessage,
-                    'is-valid': meta.touched && !errorMessage,
-                }"
-                :aria-invalid="!!errorMessage"
-                :aria-describedby="`${id}-feedback`"
-                :multiple="multiple"
-                :disabled="disabled"
-            >
-                <!-- Optional placeholder -->
-                <option v-if="placeholder && !multiple" disabled value="">
-                    {{ placeholder }}
-                </option>
+            <!-- Render options -->
+            <option v-for="opt in normalizedOptions" :key="opt.value" :value="opt.value" :disabled="!!opt.disabled">
+                {{ opt.label }}
+            </option>
+        </select>
 
-                <!-- Render options -->
-                <option v-for="opt in normalizedOptions" :key="opt.value" :value="opt.value" :disabled="!!opt.disabled">
-                    {{ opt.label }}
-                </option>
-            </select>
-
-            <div v-if="help" class="form-text">{{ help }}</div>
-            <div :id="`${id}-feedback`" class="invalid-feedback">{{ errorMessage }}</div>
-        </div>
+        <div v-if="help" class="form-text">{{ help }}</div>
+        <div :id="`${id}-feedback`" class="invalid-feedback">{{ errorMessage }}</div>
     </Field>
 </template>
 
@@ -61,20 +58,16 @@ const props = withDefaults(
         required?: boolean;
         /** Optional explicit id; otherwise auto-generated from name */
         id?: string;
-
         /** Options can be an array of { value, label } or a record like { NSW: 'NSW', VIC: 'VIC' } */
         options: SelectOption[] | Record<string, Primitive>;
     }>(),
     { multiple: false, disabled: false, required: false }
 );
 
-const { name, label, help, placeholder, multiple, disabled, required } = props;
-
+/** Auto generate ids for better maintainability. */
 const id = computed(() => props.id ?? `field-${props.name.replace(/\./g, "-")}`);
 
-/**
- * Normalize options to a consistent array of { value, label, disabled? }
- */
+/** Normalize options to a consistent array of { value, label, disabled? } */
 const normalizedOptions = computed<SelectOption[]>(() => {
     const { options } = props;
     if (Array.isArray(options)) {
