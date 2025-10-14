@@ -6,6 +6,11 @@ Built with <strong>Vue 3 + TypeScript</strong>, it features a clean component ar
 
 <blockquote>ℹ️ <em>This project is the front-end only. It reads mock data from <code>/public/data/*.json</code>.</em></blockquote>
 
+<p align="center">
+  <img src="/docs/electronicsapp.gif" />
+</p>
+
+
 <hr />
 
 <h2>✨ Features</h2>
