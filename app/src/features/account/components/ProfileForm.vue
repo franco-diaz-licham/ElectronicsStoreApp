@@ -52,7 +52,7 @@ import SelectInput from "../../../shared/components/SelectInput.vue";
 import type { PropType } from "vue";
 
 const props = defineProps({
-    model: { type: Object as PropType<ProfileModel>, required: false },
+    modelValue: { type: Object as PropType<ProfileModel>, required: false },
 });
 
 const { alertText, alertClass, showAlert } = useAlert();
@@ -67,18 +67,18 @@ const options = [
     { value: "ACT", label: "ACT" },
 ];
 const emit = defineEmits<{
-    (e: "formSubmit", payload: ProfileModel): void;
+    (e: "updated:modelValue", payload: ProfileModel): void;
 }>();
 
 const { handleSubmit, isSubmitting, resetForm } = useForm<ProfileSchema>({
     validationSchema: toTypedSchema(profileSchema),
-    initialValues: props.model || profileInitialValues,
+    initialValues: props.modelValue || profileInitialValues,
 });
 
 /** Handles submit. */
 const onSubmit = handleSubmit(async (values: ProfileModel) => {
     try {
-        emit("formSubmit", values);
+        emit("updated:modelValue", values);
         showAlert("Profile saved.", "success");
         resetForm({ values });
     } catch (e) {

@@ -7,7 +7,7 @@
                 <p class="text-center text-muted small" aria-live="polite">
                     {{ greeting }}
                 </p>
-                <ProfileForm :model="profile" @form-submit="handleSubmit" />
+                <ProfileForm :model-value="profile" @updated:model="handleSubmit" />
             </div>
 
             <!-- Order History -->

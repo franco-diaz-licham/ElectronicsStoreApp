@@ -62,7 +62,7 @@ const onSubmit = handleSubmit(async (values: ContactFormModel) => {
     try {
         emit("formSubmit", values);
         showAlert("Thanks! we'll get back to you!", "success");
-        resetForm({ values }); // keep values, clear touched/errors
+        resetForm({ values });
     } catch (e) {
         showAlert("Could not save changes.", "danger");
     }
