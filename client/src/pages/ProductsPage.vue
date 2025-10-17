@@ -92,9 +92,7 @@
 import { ref, computed, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useProducts } from "../features/products/api/useProducts";
-import { useBrands } from "../features/brands/api/useBrands";
-import { useCategories } from "../features/categories/api/useCategories";
-import type { ProductCardModel, selectorBaseModel } from "../features/products/models/product.type";
+import type { ProductCardModel } from "../features/products/models/product.type";
 import FilterBox from "../shared/components/FilterBox.vue";
 import ProductGrid from "../features/products/components/ProductGrid.vue";
 import RadioButton from "../shared/components/RadioButton.vue";
@@ -136,8 +134,8 @@ const searchQuery = computed(() => (route.query.q || "").toString().trim());
 
 // Data hooks.
 const { data: products, isLoading: productsLoading } = useProducts();
-const { data: brands, isLoading: brandsLoading } = useBrands();
-const { data: categories, isLoading: categoriesLoading } = useCategories();
+// const { data: brands, isLoading: brandsLoading } = useBrands();
+// const { data: categories, isLoading: categoriesLoading } = useCategories();
 
 /** Convert loaded products into card-ready models with href */
 const productsForCard = computed<ProductCardModel[]>(() => {
@@ -147,21 +145,25 @@ const productsForCard = computed<ProductCardModel[]>(() => {
 });
 
 /** Get unique values for filters. */
-function uniqueSortedByName<T extends selectorBaseModel>(list: T[] = []): string[] {
-    const set = new Set(list.map((x) => x.name).filter(Boolean) as string[]);
+function uniqueSortedByName(list: string[] = []): string[] {
+    const set = new Set(list.filter(Boolean));
     return [...set].sort((a, b) => a.localeCompare(b));
 }
 
 /** Unique values for brands. */
 const usedBrands = computed<string[]>(() => {
-    if (brandsLoading.value) return [];
-    return uniqueSortedByName(brands.value);
+    if (productsLoading.value) return [];
+    var brands = products.value?.map(x => x.brand);
+    if(!brands) return [];
+    return uniqueSortedByName(brands);
 });
 
 /** Unique values for categories. */
 const usedCategories = computed<string[]>(() => {
-    if (categoriesLoading.value) return [];
-    return uniqueSortedByName(categories.value);
+    if (productsLoading.value) return [];
+    var categories = products.value?.map(x => x.category);
+    if(!categories) return [];
+    return uniqueSortedByName(categories);
 });
 
 /** Filtering and sorting pipeline. */

@@ -181,7 +181,7 @@
         "display": "OLED 2000×2040 per eye",
         "refreshRate": "90/120 Hz",
         "fov": "110° approx.",
-        "connection": "USB-C to PS5"
+        "connectivity": "USB-C to PS5"
       }
     },
     {
