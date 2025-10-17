@@ -1,0 +1,19 @@
+﻿global using API.Configuration;
+global using API.Src.Application.Products.Commands;
+global using API.Src.Application.Products.Queries;
+global using API.Src.Domain.Products;
+global using API.Src.Domain.Shared;
+global using API.Src.Infrastructure.Persistence.Db;
+global using API.Src.Infrastructure.Persistence.Db.Rows;
+global using API.Src.Infrastructure.Persistence.Repositories;
+global using Funq;
+global using ServiceStack;
+global using ServiceStack.Api.OpenApi;
+global using ServiceStack.Data;
+global using ServiceStack.DataAnnotations;
+global using ServiceStack.FluentValidation;
+global using ServiceStack.OrmLite;
+global using ServiceStack.Validation;
+global using System.Data;
+
+global using API.Src.Application.Interfaces;
