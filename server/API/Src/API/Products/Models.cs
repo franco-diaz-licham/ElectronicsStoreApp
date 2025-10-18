@@ -10,6 +10,7 @@ public class CreateProductRequest : IReturn<IdResponse>
     public int CategoryId { get; set; }
     public decimal Price { get; set; }
     public int Stock { get; set; }
+    public JsonNode? Specs { get; set; }
 }
 
 [Route("/products", "GET")]

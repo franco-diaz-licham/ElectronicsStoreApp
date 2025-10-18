@@ -15,11 +15,11 @@ public sealed record TvSpecs(string ScreenSize, string Resolution, string Refres
 /// <summary>
 /// Common specifications for gaming products.
 /// </summary>
-public sealed record GamingSpecs(string Compatibility, string Battery, string Connectivity, string Features, string Fov) : IProductSpecs;
+public sealed record GamingSpecs(string Resolution, string Storage, string? Battery, string Features, string BackwardCompatability) : IProductSpecs;
 
 /// <summary>
 /// Common specifications for pc and laptop products.
 /// </summary>
-public sealed record PcSpecs(string Compatibility, string Battery, string Connectivity, string Features, string Fov) : IProductSpecs;
+public sealed record PcSpecs(string Storage, string Memory, string Ports, string Battery, string Wireless, string CPU) : IProductSpecs;
 
 

@@ -1,8 +1,9 @@
 ﻿namespace API.Src.Infrastructure.Persistence.Db.Rows;
 
+[Alias("pc_specs")]
 public class PcSpecsRow
 {
-    [PrimaryKey][Alias("product_id"), References(typeof(ProductRow))] public int ProductId { get; set; }
+    [PrimaryKey][Alias("product_id"), References(typeof(ProductsRow))] public int ProductId { get; set; }
     public string Storage { get; set; } = "";
     public string Memory { get; set; } = "";
     public string Ports { get; set; } = "";

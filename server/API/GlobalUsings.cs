@@ -15,5 +15,6 @@ global using ServiceStack.FluentValidation;
 global using ServiceStack.OrmLite;
 global using ServiceStack.Validation;
 global using System.Data;
-
+global using System.Text.Json;
 global using API.Src.Application.Interfaces;
+global using System.Text.Json.Nodes;

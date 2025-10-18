@@ -5,19 +5,19 @@ public class ProductRepository(IDbConnectionFactory dbfactory) : IProductReposit
     public async Task<bool> BrandExistsAsync(int id)
     { 
         using var db = await dbfactory.OpenAsync(); 
-        return await db.ExistsAsync<BrandRow>(x => x.Id == id); 
+        return await db.ExistsAsync<BrandsRow>(x => x.Id == id); 
     }
 
     public async Task<bool> CategoryExistsAsync(int id)
     { 
         using var db = await dbfactory.OpenAsync(); 
-        return await db.ExistsAsync<CategoryRow>(x => x.Id == id); 
+        return await db.ExistsAsync<CategoriesRow>(x => x.Id == id); 
     }
 
     public async Task<bool> TitleExistsAsync(string title)
     { 
         using var db = await dbfactory.OpenAsync(); 
-        return await db.ExistsAsync<ProductRow>(x => x.Title == title); 
+        return await db.ExistsAsync<ProductsRow>(x => x.Title == title); 
     }
 
     public async Task AddAsync(ProductEntity p)
@@ -27,7 +27,7 @@ public class ProductRepository(IDbConnectionFactory dbfactory) : IProductReposit
         using var tx = db.OpenTransaction();
 
         // Add new product
-        var row = new ProductRow
+        var row = new ProductsRow
         {
             Id = p.Id,
             Title = p.Title,
@@ -52,7 +52,7 @@ public class ProductRepository(IDbConnectionFactory dbfactory) : IProductReposit
                     Storage = m.Storage,
                     Battery = m.Battery,
                     Connectivity = m.Connectivity,
-                    Water_Resistance = m.WaterResistance
+                    WaterResistance = m.WaterResistance
                 });
                 break;
             case (int)SpecTypeEnum.TV:
@@ -62,9 +62,9 @@ public class ProductRepository(IDbConnectionFactory dbfactory) : IProductReposit
                     ProductId = p.Id,
                     ScreenSize = t.ScreenSize,
                     Resolution = t.Resolution,
-                    Refresh_Rate = t.RefreshRate,
+                    RefreshRate = t.RefreshRate,
                     Ports = t.Ports,
-                    Smart_Os = t.SmartOs
+                    SmartOs = t.SmartOs
                 });
                 break;
             default: throw new InvalidOperationException("Unsupported type");
@@ -77,27 +77,26 @@ public class ProductRepository(IDbConnectionFactory dbfactory) : IProductReposit
     {
         // Read and validate
         using var db = await dbfactory.OpenAsync();
-        var sql = db.From<ProductRow>();
+        var sql = db.From<ProductsRow>();
         if (!string.IsNullOrWhiteSpace(query)) sql.Where(x => x.Title.Contains(query) || x.Description.Contains(query));
         sql.OrderByDescending(x => x.CreatedOnUTC).Limit(skip, take);
         var rows = await db.SelectAsync(sql);
 
         // Calculate output
-        var total = (int)await db.CountAsync(db.From<ProductRow>().Where(sql.WhereExpression));
         var items = rows.Select(row =>
         {
             var job = Task.Run(() => GetSpecs(db, row.Id, (SpecTypeEnum)row.SpecsTypeId));
             var data = new ProductCreationData(row.Title, row.Description, row.Details, row.BrandId, row.CategoryId, row.Price, row.Stock, job.Result);
             return ProductEntity.Create(data);
         }).ToList();
-        return (items, total);
+        return (items, rows.Count);
     }
 
     public async Task<ProductEntity?> GetAsync(int id)
     {
         // Read and validate
         using var db = await dbfactory.OpenAsync();
-        var row = await db.SingleByIdAsync<ProductRow>(id);
+        var row = await db.SingleByIdAsync<ProductsRow>(id);
         if (row == null) return null;
 
         // Map to output
@@ -113,8 +112,8 @@ public class ProductRepository(IDbConnectionFactory dbfactory) : IProductReposit
         {
             SpecTypeEnum.Mobile => await LoadMobile(db, id),
             SpecTypeEnum.TV => await LoadTv(db, id),
-            //SpectTypeEnum.Gaming => await LoadGaming(db, id),
-            //SpectTypeEnum.Pc => await LoadPc(db, id),
+            SpecTypeEnum.Gaming => await LoadGaming(db, id),
+            SpecTypeEnum.PC => await LoadPC(db, id),
             _ => throw new InvalidOperationException("Unsupported type")
         };
 
@@ -124,7 +123,7 @@ public class ProductRepository(IDbConnectionFactory dbfactory) : IProductReposit
     public async Task DecreaseStockAsync(int productId, int qty)
     {
         using var db = await dbfactory.OpenAsync();
-        var r = await db.SingleByIdAsync<ProductRow>(productId) ?? throw new InvalidOperationException("Product not found");
+        var r = await db.SingleByIdAsync<ProductsRow>(productId) ?? throw new InvalidOperationException("Product not found");
         if (r.Stock < qty) throw new InvalidOperationException("Insufficient stock");
         r.Stock -= qty;
         await db.UpdateAsync(r);
@@ -133,24 +132,24 @@ public class ProductRepository(IDbConnectionFactory dbfactory) : IProductReposit
     private static async Task<MobileSpecs> LoadMobile(IDbConnection db, int id)
     {
         var row = await db.SingleByIdAsync<MobileSpecsRow>(id) ?? throw new InvalidOperationException("Mobile specs missing");
-        return new MobileSpecs(row.ScreenSize, row.Storage, row.Battery, row.Connectivity, row.Water_Resistance);
+        return new MobileSpecs(row.ScreenSize, row.Storage, row.Battery, row.Connectivity, row.WaterResistance);
     }
 
     private static async Task<TvSpecs> LoadTv(IDbConnection db, int id)
     {
         var row = await db.SingleByIdAsync<TvSpecsRow>(id) ?? throw new InvalidOperationException("TV specs missing");
-        return new TvSpecs(row.ScreenSize, row.Resolution, row.Refresh_Rate, row.Ports, row.Smart_Os);
+        return new TvSpecs(row.ScreenSize, row.Resolution, row.RefreshRate, row.Ports, row.SmartOs);
     }
 
-    private static async Task<TvSpecs> LoadGaming(IDbConnection db, int id)
+    private static async Task<GamingSpecs> LoadGaming(IDbConnection db, int id)
     {
-        var row = await db.SingleByIdAsync<TvSpecsRow>(id) ?? throw new InvalidOperationException("TV specs missing");
-        return new TvSpecs(row.ScreenSize, row.Resolution, row.Refresh_Rate, row.Ports, row.Smart_Os);
+        var row = await db.SingleByIdAsync<GamingSpecsRow>(id) ?? throw new InvalidOperationException("TV specs missing");
+        return new GamingSpecs(row.Resolution, row.Storage, row.Battery, row.Features, row.BackwardCompatibility);
     }
 
-    private static async Task<TvSpecs> LoadTv(IDbConnection db, int id)
+    private static async Task<PcSpecs> LoadPC(IDbConnection db, int id)
     {
-        var row = await db.SingleByIdAsync<TvSpecsRow>(id) ?? throw new InvalidOperationException("TV specs missing");
-        return new TvSpecs(row.ScreenSize, row.Resolution, row.Refresh_Rate, row.Ports, row.Smart_Os);
+        var row = await db.SingleByIdAsync<PcSpecs>(id) ?? throw new InvalidOperationException("TV specs missing");
+        return new PcSpecs(row.Storage, row.Memory, row.Ports, row.Battery, row.Wireless, row.CPU);
     }
 }

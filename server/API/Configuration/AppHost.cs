@@ -1,6 +1,4 @@
-﻿using API.Src.Application.Interfaces;
-
-namespace API.Configuration;
+﻿namespace API.Configuration;
 
 public class AppHost() : AppHostBase("Electronics API", typeof(AppHost).Assembly)
 {
@@ -16,8 +14,8 @@ public class AppHost() : AppHostBase("Electronics API", typeof(AppHost).Assembly
             allowedMethods: "GET,POST,PUT,DELETE,OPTIONS"));
 
         // Database
-        var cs = AppSettings.GetString("ConnectionStrings:Default") ?? throw new InvalidOperationException("Missing conn string");
-        container.Register(c => OrmLiteBootstrap.Create(cs));
+        var connectionString = AppSettings.GetString("ConnectionStrings:Default") ?? throw new InvalidOperationException("Missing conn string");
+        container.Register(c => OrmLiteBootstrap.Create(connectionString));
 
         // Ports & adapters
         container.RegisterAutoWiredAs<ProductRepository, IProductRepository>();
@@ -25,6 +23,7 @@ public class AppHost() : AppHostBase("Electronics API", typeof(AppHost).Assembly
         // Use cases
         container.RegisterAutoWired<CreateProductHandler>();
         container.RegisterAutoWired<GetProductsHandler>();
+        container.RegisterAutoWired<GetProductHandler>();
 
         // Migrations
         Migrations.Run(container);

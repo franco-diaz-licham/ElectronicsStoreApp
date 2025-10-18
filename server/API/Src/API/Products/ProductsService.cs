@@ -6,10 +6,19 @@ public class ProductsService(CreateProductHandler createHandler, GetProductsHand
     private readonly GetProductsHandler _getProductsHandler = getProductsHandler;
     private readonly GetProductHandler _getProductHandler = getProductHandler;
 
-    public async Task<IdResponse> Post(CreateProductRequest req)
+    public async Task<IdResponse> Post(CreateProductRequest request)
     {
-        var id = await _createHandler.Handle(new CreateProduct(req.Title, req.Description, req.BrandId, req.CategoryId, req.Price, req.Stock));
-        return new IdResponse { Id = id };
+        if (request.Specs is null) throw new ArgumentException("specs is null!");
+        try
+        {
+            var specs = SpecsMapper.MapSpecs(request.Specs, request.CategoryId);
+            var id = await _createHandler.Handle(new CreateProduct(request.Title, request.Description, request.Details, request.BrandId, request.CategoryId, request.Price, request.Stock, specs));
+            return new IdResponse { Id = id };
+        }
+        catch
+        {
+            throw;
+        }
     }
 
     public async Task<GetProductsResponse> Get(GetProductsRequest req)
