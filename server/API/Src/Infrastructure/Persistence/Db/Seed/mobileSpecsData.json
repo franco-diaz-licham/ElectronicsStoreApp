@@ -1,0 +1,50 @@
+[
+  {
+    "productId": 1,
+    "screenSize": "6.1\"",
+    "storage": "256GB",
+    "battery": "Approx. 3274 mAh",
+    "connectivity": "5G, Wi-Fi 6E, BT 5.3, NFC",
+    "waterResistance": "IP68"
+  },
+  {
+    "productId": 2,
+    "screenSize": "6.8\"",
+    "storage": "512GB",
+    "battery": "5000 mAh",
+    "connectivity": "5G, Wi-Fi 7, BT 5.3, NFC",
+    "waterResistance": "IP68"
+  },
+  {
+    "productId": 12,
+    "screenSize": "",
+    "storage": "",
+    "battery": "Up to 8h (buds)",
+    "connectivity": "Bluetooth 5.x",
+    "waterResistance": "IPX7"
+  },
+  {
+    "productId": 13,
+    "screenSize": "",
+    "storage": "",
+    "battery": "",
+    "connectivity": "Wi-Fi, BT",
+    "waterResistance": ""
+  },
+  {
+    "productId": 14,
+    "screenSize": "",
+    "storage": "",
+    "battery": "",
+    "connectivity": "Wi-Fi, BT",
+    "waterResistance": ""
+  },
+  {
+    "productId": 15,
+    "screenSize": "",
+    "storage": "",
+    "battery": "Up to 30 hours",
+    "connectivity": "BT 5.2, 3.5mm",
+    "waterResistance": ""
+  }
+]

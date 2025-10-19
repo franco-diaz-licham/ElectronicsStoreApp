@@ -11,7 +11,7 @@ public sealed class ProductEntity : BaseEntity
     public int CategoryId { get; private set; }
     public CategoryEntity? Category { get; private set; }
     public int SpecsTypeId { get; private set; }
-    public SpecsTypeEntity? SpecsType { get; private set; }
+    public SpecTypesEntity? SpecTypes { get; private set; }
     public int Stock { get; private set; }
     public IProductSpecs Specs { get; private set; }
     public DateTime CreatedOn { get; private set; }

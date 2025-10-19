@@ -1,0 +1,74 @@
+[
+  {
+    "productId": 3,
+    "storage": "512GB SSD",
+    "memory": "",
+    "ports": "2x TB4, MagSafe",
+    "battery": "Up to 18 hours",
+    "wireless": "Wi-Fi 6E, BT 5.3",
+    "CPU": ""
+  },
+  {
+    "productId": 4,
+    "storage": "1TB SSD",
+    "memory": "",
+    "ports": "2x TB4",
+    "battery": "Approx. 55 Wh",
+    "wireless": "Wi-Fi 6E, BT 5.3",
+    "CPU": ""
+  },
+  {
+    "productId": 5,
+    "storage": "1TB SSD",
+    "memory": "",
+    "ports": "2x TB4",
+    "battery": "57 Wh",
+    "wireless": "Wi-Fi 6E, BT 5.2",
+    "CPU": ""
+  },
+  {
+    "productId": 16,
+    "storage": "512GB SSD",
+    "memory": "16GB unified",
+    "ports": "2x TB4, 2x USB-A, HDMI, Ethernet",
+    "battery": "",
+    "wireless": "Wi-Fi 6E, BT 5.3",
+    "CPU": ""
+  },
+  {
+    "productId": 17,
+    "storage": "512GB SSD",
+    "memory": "16GB",
+    "ports": "USB-C, USB-A, HDMI/DP, Ethernet",
+    "battery": "",
+    "wireless": "",
+    "CPU": "Intel Core i7"
+  },
+  {
+    "productId": 18,
+    "storage": "512GB SSD",
+    "memory": "16GB",
+    "ports": "USB-C, USB-A, DP/HDMI, Ethernet",
+    "battery": "",
+    "wireless": "",
+    "CPU": "Intel Core i7"
+  },
+  {
+    "productId": 19,
+    "storage": "1TB SSD",
+    "memory": "",
+    "ports": "",
+    "battery": "Approx. 86 Wh",
+    "wireless": "Wi-Fi 6, BT 5.2",
+    "CPU": ""
+  },
+  {
+    "productId": 20,
+    "storage": "1TB SSD",
+    "memory": "",
+    "ports": "",
+    "battery": "80 Wh",
+    "wireless": "Wi-Fi 6E, BT 5.2",
+    "CPU": ""
+  }
+]

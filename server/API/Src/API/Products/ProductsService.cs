@@ -21,18 +21,15 @@ public class ProductsService(CreateProductHandler createHandler, GetProductsHand
         }
     }
 
-    public async Task<GetProductsResponse> Get(GetProductsRequest req)
+    public async Task<GetProductsResponse> Get(GetProductsRequest query)
     {
-        var (items, total) = await _getProductsHandler.Handle(new GetProducts(req.Page, req.PageSize, req.Query));
+        var (items, total) = await _getProductsHandler.Handle(new GetProducts(query.Page, query.PageSize, query.Query));
         return new GetProductsResponse { Total = total, Items = items.Cast<object>().ToArray() };
     }
 
     public async Task<GetProductResponse> Get(GetProductRequest query)
     {
-        var order = await _getProductHandler.Handle(new GetProduct(query.Id)) ?? throw HttpError.NotFound("Product not found");
-        return new GetProductResponse
-        {
-            Id = query.Id
-        };
+        var model = await _getProductHandler.Handle(new GetProduct(query.Id)) ?? throw HttpError.NotFound("Product not found");
+        return model.ConvertTo<GetProductResponse>();
     }
 }

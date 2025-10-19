@@ -2,12 +2,13 @@
 
 public class GetProductsHandler(IProductRepository repo)
 {
-    public async Task<(IReadOnlyList<object> items, int total)> Handle(GetProducts q)
+    public async Task<(IReadOnlyList<object> items, int total)> Handle(GetProducts query)
     {
-        var skip = Math.Max(0, (q.Page - 1)) * Math.Clamp(q.PageSize, 1, 200);
-        var take = Math.Clamp(q.PageSize, 1, 200);
-        var (items, total) = await repo.GetAllAsync(skip, take, q.Query);
-        // Map to lightweight VM
+        var skip = Math.Max(0, (query.Page - 1)) * Math.Clamp(query.PageSize, 1, 200);
+        var take = Math.Clamp(query.PageSize, 1, 200);
+
+        // fetch data and map
+        var (items, total) = await repo.GetAllAsync(skip, take, query.Query);
         return (items.Select(p => new {
             p.Id,
             p.Title,

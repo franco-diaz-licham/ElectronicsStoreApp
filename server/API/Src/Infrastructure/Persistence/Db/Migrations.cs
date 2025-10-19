@@ -2,6 +2,7 @@
 
 public static class Migrations
 {
+
     public static void Run(Container c)
     {
         // init db connection
@@ -11,7 +12,7 @@ public static class Migrations
         // migrate tables
         db.CreateTableIfNotExists<BrandsRow>();
         db.CreateTableIfNotExists<CategoriesRow>();
-        db.CreateTableIfNotExists<SpecsTypeRow>();
+        db.CreateTableIfNotExists<SpecTypesRow>();
         db.CreateTableIfNotExists<ProductsRow>();
         db.CreateTableIfNotExists<GamingSpecsRow>();
         db.CreateTableIfNotExists<MobileSpecsRow>();
@@ -19,7 +20,6 @@ public static class Migrations
         db.CreateTableIfNotExists<PcSpecsRow>();
 
         // Example seed
-        if (!db.Exists<BrandsRow>(x => x.Name == "Acme")) db.Insert(new BrandsRow { Id = 1, Name = "Acme" });
-        if (!db.Exists<CategoriesRow>(x => x.Name == "Laptops")) db.Insert(new CategoriesRow { Id = 2, Name = "Laptops" });
+        SeedData.SeedDbData(db);
     }
 }

@@ -36,7 +36,7 @@ public class ProductRepository(IDbConnectionFactory dbfactory) : IProductReposit
             BrandId = p.BrandId,
             CategoryId = p.CategoryId,
             SpecsTypeId = p.SpecsTypeId,
-            CreatedOnUTC = DateTime.UtcNow
+            CreatedOnUtc = DateTime.UtcNow
         };
         await db.InsertAsync(row);
 
@@ -79,8 +79,8 @@ public class ProductRepository(IDbConnectionFactory dbfactory) : IProductReposit
         using var db = await dbfactory.OpenAsync();
         var sql = db.From<ProductsRow>();
         if (!string.IsNullOrWhiteSpace(query)) sql.Where(x => x.Title.Contains(query) || x.Description.Contains(query));
-        sql.OrderByDescending(x => x.CreatedOnUTC).Limit(skip, take);
-        var rows = await db.SelectAsync(sql);
+        sql.OrderByDescending(x => x.CreatedOnUtc).Limit(skip, take);
+        var rows = await db.LoadSelectAsync(sql);
 
         // Calculate output
         var items = rows.Select(row =>
@@ -96,7 +96,7 @@ public class ProductRepository(IDbConnectionFactory dbfactory) : IProductReposit
     {
         // Read and validate
         using var db = await dbfactory.OpenAsync();
-        var row = await db.SingleByIdAsync<ProductsRow>(id);
+        var row = await db.LoadSingleByIdAsync<ProductsRow>(id);
         if (row == null) return null;
 
         // Map to output
@@ -143,13 +143,13 @@ public class ProductRepository(IDbConnectionFactory dbfactory) : IProductReposit
 
     private static async Task<GamingSpecs> LoadGaming(IDbConnection db, int id)
     {
-        var row = await db.SingleByIdAsync<GamingSpecsRow>(id) ?? throw new InvalidOperationException("TV specs missing");
+        var row = await db.SingleByIdAsync<GamingSpecsRow>(id) ?? throw new InvalidOperationException("Gaming specs missing");
         return new GamingSpecs(row.Resolution, row.Storage, row.Battery, row.Features, row.BackwardCompatibility);
     }
 
     private static async Task<PcSpecs> LoadPC(IDbConnection db, int id)
     {
-        var row = await db.SingleByIdAsync<PcSpecs>(id) ?? throw new InvalidOperationException("TV specs missing");
+        var row = await db.SingleByIdAsync<PcSpecs>(id) ?? throw new InvalidOperationException("PC specs missing");
         return new PcSpecs(row.Storage, row.Memory, row.Ports, row.Battery, row.Wireless, row.CPU);
     }
 }

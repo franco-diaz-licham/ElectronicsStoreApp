@@ -1,18 +1,18 @@
 ﻿namespace API.Src.Domain.Products;
 
-public sealed class SpecsTypeEntity : BaseEntity
+public sealed class SpecTypesEntity : BaseEntity
 {
     public string Name { get; private set; }
 
-    private SpecsTypeEntity(string name)
+    private SpecTypesEntity(string name)
     {
         Name = name;
     }
 
-    public static SpecsTypeEntity Create(string name)
+    public static SpecTypesEntity Create(string name)
     {
         if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("Name required");
-        return new SpecsTypeEntity(name.Trim());
+        return new SpecTypesEntity(name.Trim());
     }
 }
 

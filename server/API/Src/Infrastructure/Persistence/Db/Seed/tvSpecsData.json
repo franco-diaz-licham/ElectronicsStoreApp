@@ -1,0 +1,26 @@
+[
+  {
+    "productId": 6,
+    "screenSize": "65\"",
+    "resolution": "4K",
+    "refreshRate": "120 Hz",
+    "ports": "HDMI 2.1, USB, Optical",
+    "smartOs": "Tizen"
+  },
+  {
+    "productId": 7,
+    "screenSize": "65\"",
+    "resolution": "4K",
+    "refreshRate": "120 Hz",
+    "ports": "HDMI 2.1, USB",
+    "smartOs": "webOS"
+  },
+  {
+    "productId": 8,
+    "screenSize": "65\"",
+    "resolution": "4K",
+    "refreshRate": "120 Hz",
+    "ports": "HDMI 2.1, USB, Optical",
+    "smartOs": "Google TV"
+  }
+]
